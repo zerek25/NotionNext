@@ -1,5 +1,5 @@
+import { useGitBookGlobal } from '@/themes/gitbook'
 import Catalog from './Catalog'
-import { useMediumGlobal } from '../LayoutBase'
 
 /**
  * 悬浮抽屉目录
@@ -9,18 +9,18 @@ import { useMediumGlobal } from '../LayoutBase'
  * @constructor
  */
 const TocDrawer = ({ post, cRef }) => {
-  const { tocVisible, changeTocVisible } = useMediumGlobal()
+  const { tocVisible, changeTocVisible } = useGitBookGlobal()
   const switchVisible = () => {
     changeTocVisible(!tocVisible)
   }
   return <>
-    <div id='medium-toc-float' className='fixed top-0 right-0 z-40'>
+    <div id='gitbook-toc-float' className='fixed top-0 right-0 z-40 md:hidden'>
       {/* 侧边菜单 */}
       <div
         className={(tocVisible ? 'animate__slideInRight ' : ' -mr-72 animate__slideOutRight') +
-        ' overflow-y-hidden shadow-card w-60 duration-200 fixed right-1 bottom-16 rounded py-2 bg-white dark:bg-gray-600'}>
+        ' overflow-y-hidden shadow-card w-60 duration-200 fixed right-1 bottom-16 rounded py-2 bg-white dark:bg-hexo-black-gray'}>
           {post && <>
-           <div className='dark:text-gray-400 text-gray-600 h-56 p-3'>
+           <div className='dark:text-gray-400 text-gray-600 h-96 p-3'>
              <Catalog post={post}/>
            </div>
           </>}
